@@ -9,7 +9,7 @@ click==8.1.4
 colorama==0.4.6
 cryptography==41.0.1
 firebase-admin==6.2.0
-Flask==2.3.2
+Flask
 Flask-FontAwesome==0.1.5
 Flask-Login==0.6.2
 Flask-Testing==0.8.1
