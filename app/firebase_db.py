@@ -12,21 +12,21 @@ firebase_admin.initialize_app(credential, {'projectId': 'python-web-392316'})
 db: Client = firestore.client()
 
 
-def get_users() -> list[DocumentSnapshot]:
+def get_users():
     return db.collection('users').get()
 
 
-def get_user(user_id) -> DocumentSnapshot:
+def get_user(user_id) :
     return db.collection("users").document(user_id).get()
 
 
-def get_user_by_username(username) -> DocumentSnapshot:
+def get_user_by_username(username) :
     user = db.collection('users').where(
         "username", "==", username).limit(1).get()
     return user.pop() if len(user) == 1 else None
 
 
-def get_todos(user_id) -> list[DocumentSnapshot]:
+def get_todos(user_id) :
     return db.collection("users").document(user_id).collection("todos").get()
 
 def create_user(user_data) :
