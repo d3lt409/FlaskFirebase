@@ -1,4 +1,0 @@
-env_file: .env
-app_name: FlaskFirebaseApp
-build_command: python3 app.py
-deploy_command: gunicorn app:app
