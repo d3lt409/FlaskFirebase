@@ -1,0 +1,33 @@
+{% macro render_todo(todo, delete_todo_form, update_form) %}
+<div class="col-sm-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ todo.title }}</h5>
+      <p class="card-text">{{ todo.description }}</p>
+      {% if not todo.done %}
+      <div class="d-flex justify-content-between">
+        <form action="{{ url_for('todo.update', todo_id=todo.id, done=todo.done ) }}" method="post">
+          {{ update_form.submit(class="btn btn-success btn-md", type="submit") }}
+        </form>
+        <form action="{{ url_for('todo.delete', todo_id=todo.id ) }}">
+          {{ delete_todo_form.submit(class="btn btn-danger btn-md", type="submit") }}
+        </form>
+      </div>
+
+      {% else %}
+      <div class="d-flex justify-content-between">
+        <form action="{{ url_for('todo.update', todo_id=todo.id, done=todo.done ) }}" method="post">
+          {{ update_form.submit(class="btn btn-warning btn-md", type="submit") }}
+        </form>
+        <form action="{{ url_for('todo.delete', todo_id=todo.id ) }}" method="post">
+          {{ delete_todo_form.submit(class="btn btn-danger btn-md", type="submit") }}
+        </form>
+      </div>
+      {% endif %}
+        
+      
+    </div>
+</div>
+</div>
+
+{% endmacro %}
