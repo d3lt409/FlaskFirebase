@@ -7,7 +7,7 @@ from google.cloud.firestore_v1.base_document import DocumentSnapshot
 from google.cloud.firestore_v1.collection import CollectionReference
 
 
-credential = firebase_admin.credentials.ApplicationDefault()
+credential = firebase_admin.credentials.Certificate(os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"))
 firebase_admin.initialize_app(credential, {'projectId': 'python-web-392316'})
 db: Client = firestore.client()
 
