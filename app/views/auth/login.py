@@ -4,6 +4,7 @@ from flask_login import login_user
 from app.models.userModel import User, UserData
 from app.firebase_db import get_user_by_username
 from app.views.form import LoginForm
+from werkzeug.security import check_password_hash
 
 from . import auth_bp
 
@@ -13,11 +14,11 @@ def login():
 
     loging_form = LoginForm()
     if loging_form.validate_on_submit():
-        session["username"] = loging_form.username.data.lower()
-        session["password"] = loging_form.password.data
-        user_doc = get_user_by_username(session["username"])
-        user = user_doc.to_dict()
-        if user_doc and session["password"] == user["password"]:
+        username = loging_form.username.data.lower()
+        password = loging_form.password.data
+        user_doc = get_user_by_username(username)
+        user = user_doc.to_dict() if user_doc else None
+        if user_doc and check_password_hash(user["password"],password):
             
             user["id"] = user_doc.id
             user_model = User(UserData(**user))
