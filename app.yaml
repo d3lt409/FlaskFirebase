@@ -11,4 +11,4 @@ handlers:
 env_variables:
   SECRET_KEY: 7a#U?onCvR7.~1r
   API_SECRET: jWY{pXat7'kqa$5
-  GOOGLE_APPLICATION_CREDENTIALS: app/credentials/firebase.json
+  GOOGLE_APPLICATION_CREDENTIALS: app/credentials/firebase_admin.json
